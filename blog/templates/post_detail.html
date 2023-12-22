@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1>{{post.title}}</h1><br>
+    <p>{{ post.date }}</p>
+
+    <img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid img-detail" style="height: 500px; object-fit: cover;"/>
+    
+    <h2 class="my-2 h5 text-muted">{{ post.date|date:'M d Y' }}</h2>
+
+    <div class="my-auto p-4">
+
+    <p>{{post.body|safe}}</p>
+
+    </div>
+</div>
+
+{% endblock %}
+ 

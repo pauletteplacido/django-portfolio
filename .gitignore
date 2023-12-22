@@ -1,0 +1,8 @@
+.vscode
+media
+**/__pycache__
+env
+redes_sociales
+proyect.code-workspace
+.env
+de.sqlite3

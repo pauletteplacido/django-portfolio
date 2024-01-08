@@ -5,4 +5,6 @@ env
 redes_sociales
 proyect.code-workspace
 .env
-de.sqlite3
+db.sqlite3
+staticfiles
+migrations

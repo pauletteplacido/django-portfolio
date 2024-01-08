@@ -2,13 +2,17 @@
 
 {% block content %}
 
+
 <div class="text-center">
 
     <h1>{{post.title}}</h1><br>
     <p>{{ post.date }}</p>
-
-    <img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid img-detail" style="height: 500px; object-fit: cover;"/>
-    
+    <div class="embed-responsive embed-responsive-16by9">
+        <video width="100%" height="auto" controls>
+            <source src="{{ post.media_file.url }}" type="video/mp4">
+        </video>
+    </div>
+    <img src="{{post.media_file.url}}" alt="{{post.title}}" class="img-fluid img-detail" style="height: 500px; object-fit:cover;"/>
     <h2 class="my-2 h5 text-muted">{{ post.date|date:'M d Y' }}</h2>
 
     <div class="my-auto p-4">

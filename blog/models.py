@@ -5,8 +5,9 @@ from datetime import date
 class Posts(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
-    image = models.ImageField(upload_to='blog/images/')
-    date = models.DateField(("Date"), default=date.today)
+    media_file = models.FileField(
+        upload_to='blog/media/', null=True, blank=True)
+    date = models.DateField(default=date.today)
 
     def __str__(self):
         return self.title

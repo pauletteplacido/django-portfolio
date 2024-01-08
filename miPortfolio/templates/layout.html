@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body class="text-light">
+    <div id="top"></div>
 
     {% include 'partials/navbar.html' %}
 
@@ -17,9 +18,24 @@
 
     {% block content %}
     {% endblock %}
-    </div>
-
+   
     <footer>Foother</footer>
     
 </body>
+<a href="#top" class="scroll-to-top">Volver arriba</a>
+
+<!-- JavaScript para el botón de volver arriba -->
+<script>
+  // Función para desplazarse suavemente hacia arriba
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  // Agregar un evento de clic al enlace o botón
+  document.querySelector('.scroll-to-top').addEventListener('click', scrollToTop);
+
+</script>
 </html>

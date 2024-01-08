@@ -3,6 +3,9 @@
 {% block content %}
 
 {% load static %}
+<head> 
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
 
 <header class="row bg-black">
     <div class="col-md-4 mb-5"><br>
@@ -16,29 +19,37 @@
             Integer pretium vel augue vitae malesuada. Curabitur tortor magna, 
             vestibulum eu enim eget, commodo tristique lectus. Sed accumsan vel felis lobortis vulputate.</p>
 
-        <a href="{% static 'portfolio/redes_sociales.pdf' %}" class="btn-group-sm rounded-0 my-3">Download CV</a>
+        <a href="{% static 'portfolio/redes_sociales.pdf' %}" class="btn-group-sm rounded-0 my-3" target='_blank'>Download CV</a>
 
     </div>
 </header>
-
 <div class="row my-4 text-center py-lg-5">
-
-
     <h1>My Projects</h1>
     <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
         consectetur, adipisci velit..."</p><br >
 
     <div class="container-sm py-lg-5" >
         <div class="row">
-            {% for project in project %}
+            {% for project in projects %}
             <div class="col-md-4 mb-5">
                 <div class="card bg-black card-project">
-                    <img src="{{project.image.url}}" alt="{{project.description}}" class="card-img-top" style="height: 200px; object-fit: cover;"/>
+                    {% if '.mp4' in project.media_file.url|lower %}
+                    <div>
+                        <video width="100%" height="auto" controls>
+                            <source src="{{ project.media_file.url }}" type="video/mp4">
+                                Tu navegador no admite la etiqueta de video.
+                        </video> 
+                    </div>
+                    {% else %}
+                        <a href="{{ project.media_file.url }}" target="_blank" class="card-link" onclick="window.open(this.href, '_blank'); return false;">
+                            <img class="card-img-bottom" src="{{ project.media_file.url}}" alt="{{ project.description }}" class="card-img-top"/>
+                        </a>
+                    {% endif %}
                     <div class="card bg-body-secondary">
-                        <h3 class="card-title">{{ project.title }}</h3>
-                        <p class="card-text">{{ project.description }}</p>
+                        <h3>{{ project.title }}</h3>
+                        <p >{{ project.description }}</p>
                         {% if project.url %}
-                            <a href="{{project.url}}" class="btn btn-secondary rounded btn-sm" target="_blank" >View Project</a>                   
+                        <a href="{{ project.url }}" class="btn btn-secondary rounded btn-sm" target="_blank" >View Project</a>                   
                         {% endif %}
                     </div>
                 </div>
@@ -47,7 +58,6 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-
-
+    
+{% endblock%}
+                

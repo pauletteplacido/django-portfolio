@@ -1,13 +1,25 @@
 body {
     background: #090909;
-
 }
 
 .bg-black {
     background: #000;
 }
 
-.card-project :hover {
+.card-project:hover {
     border: 1px solid #eee;
     cursor: pointer;
+}
+
+.card-project {
+    margin-bottom: 20px;
+    /* Espacio entre los proyectos */
+}
+
+.card-project img,
+.card-project video {
+    width: 100%;
+    /* Todos los elementos ocuparán el 100% del contenedor */
+    height: auto;
+    /* Altura automática para mantener la proporción */
 }
